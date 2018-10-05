@@ -1,5 +1,15 @@
 <?php
 
+namespace Frc\WP\Base;
+
+function is_env($env) {
+    return defined('WP_ENV') && WP_ENV !== $env;
+}
+
+function is_production() {
+    return !defined('WP_ENV') || is_env('production');
+}
+
 function frc_is_plugin_active($plugin) {
     if ( !function_exists('is_plugin_active') )
         include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
@@ -37,6 +47,6 @@ function frc_locate_plugin($name) {
     return $name . '/' . $name . '.php';
 }
 
-function frc_base_asset_path($path) {
+function asset_path($path) {
     return plugins_url( 'assets/' . $path , dirname(__DIR__) . '/plugin.php' );
 }

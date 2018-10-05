@@ -49,5 +49,5 @@ function clean_style_tag($input) {
     // Only display media if it is meaningful
     $media = $matches[3][0] !== '' && $matches[3][0] !== 'all' ? ' media="' . $matches[3][0] . '"' : '';
     return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
-  }
-  add_filter('style_loader_tag', __NAMESPACE__ . '\\clean_style_tag');
+}
+add_filter('style_loader_tag', __NAMESPACE__ . '\\clean_style_tag');
