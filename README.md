@@ -2,11 +2,11 @@
 
 To activate module add theme support:
 
-`add_theme_support('frc-{SIDE}-{MODULE-NAME}');`
+`add_theme_support('frc-base-{SIDE}-{MODULE-NAME}');`
 
 For example:
 
-`add_theme_support('frc-theme-disable-api');`
+`add_theme_support('frc-base-theme-disable-api');`
 
 Available sides:
 
