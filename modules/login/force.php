@@ -2,6 +2,11 @@
 
 namespace Frc\WP\Base\Login\Force;
 
+use Frc\WP\Base as helpers;
+
+if ( isset($options['env']) && !helpers\is_env($options['env']) )
+    return;
+
 add_action('template_redirect', __NAMESPACE__ . '\\force_login');
 add_filter('rest_authentication_errors', __NAMESPACE__ . '\\force_login_api');
 

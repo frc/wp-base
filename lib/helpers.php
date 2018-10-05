@@ -3,7 +3,7 @@
 namespace Frc\WP\Base;
 
 function is_env($env) {
-    return defined('WP_ENV') && WP_ENV !== $env;
+    return defined('WP_ENV') && WP_ENV === $env;
 }
 
 function is_production() {
