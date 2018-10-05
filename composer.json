@@ -1,0 +1,19 @@
+{
+    "name": "frc/frc-wp-base",
+    "type": "wordpress-plugin",
+    "description": "A collection of modifications and default settings to apply for theme, admin, login & plugins.",
+    "homepage": "https://www.frantic.com/",
+    "authors": [
+        {
+            "name": "Joonas Meriläinen",
+            "email": "joonas.merilainen@frantic.com"
+        }
+    ],
+    "keywords": [
+        "wordpress"
+    ],
+    "require": {
+        "php": ">=7.0",
+        "composer/installers": "~1.0"
+    }
+}
