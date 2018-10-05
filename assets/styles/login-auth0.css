@@ -1,0 +1,30 @@
+#extra-options a {
+    text-align: center;
+    height: 30px;
+    line-height: 28px;
+    padding: 0 12px 2px;
+    background: #0085ba;
+    border-color: #0073aa #006799 #006799;
+    box-shadow: 0 1px 0 #006799;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;
+    vertical-align: top;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    width: 100%;
+ }
+
+ #extra-options a:hover {
+    background: #008ec2;
+    border-color: #006799;
+    color: #fff;
+ }
