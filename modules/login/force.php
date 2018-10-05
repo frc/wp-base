@@ -3,6 +3,7 @@
 namespace Frc\WP\Base\Login\Force;
 
 add_action('template_redirect', __NAMESPACE__ . '\\force_login');
+add_filter('rest_authentication_errors', __NAMESPACE__ . '\\force_login_api');
 
 function force_login() {
 
@@ -32,4 +33,15 @@ function force_login() {
     }
 
     auth_redirect();
+
+}
+
+function force_login_api($result ) {
+
+	if ( ! is_user_logged_in() ) {
+		return new WP_Error( 'rest_forbidden', __( 'Sorry, you are not allowed to do that.' ), array( 'status' => rest_authorization_required_code() ) );
+    }
+
+    return $result;
+
 }
