@@ -89,6 +89,7 @@ function maybe_require_feature($file, $side = 'theme') {
 
 function enabled_by_default($feature) {
     return in_array($feature, [
+        'frc-plugin-defaults',
         'frc-admin-defaults',
         'frc-login-defaults',
         'frc-theme-defaults',
