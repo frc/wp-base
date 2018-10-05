@@ -61,7 +61,7 @@ function maybe_require_feature($file, $side = 'theme') {
     }
 
     // Add default supports
-    if ( enabled_by_default($feature) )
+    if ( enabled_by_default($feature) && !current_theme_supports($feature) )
         add_theme_support($feature);
 
     // If all side's modules wanted, add support for individual modules
@@ -82,6 +82,10 @@ function maybe_require_feature($file, $side = 'theme') {
 
     if ( !file_exists($file) )
         return;
+
+    $options = get_theme_support($feature);
+    if ( isset($options[0]) && is_array($options[0]) )
+        $options = $options[0];
 
     require_once $file;
 
