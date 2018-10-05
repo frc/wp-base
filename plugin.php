@@ -12,6 +12,8 @@ namespace Frc\WP\Base;
 
 require_once __DIR__ . '/lib/helpers.php';
 
+const FRC_FEATURE_PREFIX = 'frc-base-';
+
 function fetch_modules($folder) {
     return glob(__DIR__ . '/modules/'. $folder .'/*.php');
 }
@@ -40,13 +42,16 @@ function load_modules() {
 }
 
 function get_plugin_from_feature($feature) {
-    return str_replace('frc-plugin-', '', $feature);
+    $prefix = FRC_FEATURE_PREFIX;
+    return str_replace("{$prefix}plugin-", '', $feature);
 }
 
 function maybe_require_feature($file, $side = 'theme') {
 
+    $prefix = FRC_FEATURE_PREFIX;
+
     // Set feature name, for example: frc-theme-disable-api
-    $feature = 'frc-' . $side . '-' . basename($file, '.php');
+    $feature = $prefix . $side . '-' . basename($file, '.php');
 
     // Remove disabled (prefixed with "!")
     if ( current_theme_supports('!' . $feature) ) {
@@ -59,8 +64,8 @@ function maybe_require_feature($file, $side = 'theme') {
     if ( enabled_by_default($feature) )
         add_theme_support($feature);
 
-    // If all plugin modules wanted, add support for individual plugin
-    if ( $side === 'plugin' && current_theme_supports('frc-plugin-all') )
+    // If all side's modules wanted, add support for individual modules
+    if ( current_theme_supports("{$prefix}{$side}-all") )
         add_theme_support($feature);
 
     // Disable if module is not supported
