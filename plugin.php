@@ -14,6 +14,9 @@ require_once __DIR__ . '/lib/helpers.php';
 
 const FRC_FEATURE_PREFIX = 'frc-base-';
 
+if ( !defined('WP_ENV') )
+    define('WP_ENV', 'production');
+
 function fetch_modules($folder) {
     return glob(__DIR__ . '/modules/'. $folder .'/*.php');
 }
