@@ -1,0 +1,10 @@
+.login h1 a {
+    height: 40px;
+    width: auto;
+    background-image: url('../images/logo-frantic.svg');
+    background-size: contain;
+}
+
+#backtoblog {
+    visibility: hidden;
+}
