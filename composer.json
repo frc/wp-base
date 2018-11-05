@@ -1,6 +1,6 @@
 {
     "name": "frc/frc-wp-base",
-    "type": "wordpress-plugin",
+    "type": "wordpress-muplugin",
     "description": "A collection of modifications and default settings to apply for theme, admin, login & plugins.",
     "homepage": "https://www.frantic.com/",
     "authors": [
