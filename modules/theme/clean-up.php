@@ -40,6 +40,8 @@ add_filter('the_generator', '__return_false');
 
 /**
  * Clean up output of stylesheet <link> tags
+ *
+ * @link https://github.com/roots/soil/blob/master/modules/clean-up.php
  */
 function clean_style_tag($input) {
     preg_match_all("!<link rel='stylesheet'\s?(id='[^']+')?\s+href='(.*)' type='text/css' media='(.*)' />!", $input, $matches);
@@ -51,3 +53,14 @@ function clean_style_tag($input) {
     return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 }
 add_filter('style_loader_tag', __NAMESPACE__ . '\\clean_style_tag');
+
+/**
+ * Clean up output of <script> tags
+ *
+ * @link https://github.com/roots/soil/blob/master/modules/clean-up.php
+ */
+function clean_script_tag($input) {
+    $input = str_replace("type='text/javascript' ", '', $input);
+    return str_replace("'", '"', $input);
+}
+add_filter('script_loader_tag', __NAMESPACE__ . '\\clean_script_tag');
