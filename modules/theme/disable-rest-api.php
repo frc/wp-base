@@ -4,17 +4,28 @@ namespace Frc\WP\Base\Theme\DisableRESTApi;
 
 use WP_Error;
 
+/**
+ * Options example:
+ * $options = [
+ *     'disabled' => ['/'],
+ *     'allowed' => ['posts']
+ * ];
+ */
+
 if ( is_array($options) ) {
+
     if ( isset($options['disabled']) && is_array($options['disabled']) ) {
         add_filter('frc/base/rest/disabled', function($items) use ($options) {
             return array_merge($items, $options['disabled']);
         });
     }
+
     if ( isset($options['allowed']) && is_array($options['allowed']) ) {
         add_filter('frc/base/rest/allowed', function($items) use ($options) {
             return array_merge($items, $options['allowed']);
         });
     }
+
 }
 
 function get_current_route() {
@@ -31,8 +42,9 @@ function is_whitelisted($router) {
     $allowed = apply_filters('frc/base/rest/allowed', []);
 
     foreach( $blocked as $item ) {
-        if ( !in_array($item, $allowed) && strpos($router, $item) !== false )
+        if ( !in_array($item, $allowed) && strpos($router, $item) !== false ) {
             return false;
+        }
     }
 
     return true;

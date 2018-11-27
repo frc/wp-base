@@ -14,8 +14,9 @@ require_once __DIR__ . '/lib/helpers.php';
 
 const FRC_FEATURE_PREFIX = 'frc-base-';
 
-if ( !defined('WP_ENV') )
+if ( !defined('WP_ENV') ) {
     define('WP_ENV', 'production');
+}
 
 function fetch_modules($folder) {
     return glob(__DIR__ . '/modules/'. $folder .'/*.php');
@@ -23,21 +24,25 @@ function fetch_modules($folder) {
 
 function load_modules() {
 
+    // Load plugin modules always first
     foreach ( fetch_modules('plugin') as $file ) {
         maybe_require_feature($file, 'plugin');
     }
 
-    if ( is_admin() ) {
-        foreach ( fetch_modules('admin') as $file ) {
-            maybe_require_feature($file, 'admin');
-        }
-        return;
-    }
-
+    // Login and access related modules (not strictly limited for login screen)
     foreach ( fetch_modules('login') as $file ) {
         maybe_require_feature($file, 'login');
     }
 
+    // Admin related modules (only loaded on admin side)
+    if ( is_admin() ) {
+        foreach ( fetch_modules('admin') as $file ) {
+            maybe_require_feature($file, 'admin');
+        }
+        return; // If on admin, theme modules won't be activated
+    }
+
+    // Theme or other public related modules
     foreach ( fetch_modules('theme') as $file ) {
         maybe_require_feature($file, 'theme');
     }
@@ -64,31 +69,39 @@ function maybe_require_feature($file, $side = 'theme') {
     }
 
     // Add default supports
-    if ( enabled_by_default($feature) && !current_theme_supports($feature) )
+    if ( enabled_by_default($feature) && !current_theme_supports($feature) ) {
         add_theme_support($feature);
+    }
 
     // If all side's modules wanted, add support for individual modules
-    if ( current_theme_supports("{$prefix}{$side}-all") )
+    if ( current_theme_supports("{$prefix}{$side}-all") ) {
         add_theme_support($feature);
+    }
 
     // Disable if module is not supported
-    if ( !current_theme_supports($feature) )
+    if ( !current_theme_supports($feature) ) {
         return;
+    }
 
     // Activate admin modules only in admin side
-    if ( $side === 'admin' && !is_admin() )
+    if ( $side === 'admin' && !is_admin() ) {
         return;
+    }
 
     // Disable unactive plugin modules
-    if ( $side === 'plugin' && !frc_is_plugin_active(get_plugin_from_feature($feature)) )
+    if ( $side === 'plugin' && !frc_is_plugin_active(get_plugin_from_feature($feature)) ) {
         return;
+    }
 
-    if ( !file_exists($file) )
+    if ( !file_exists($file) ) {
         return;
+    }
 
+    // Set $options variable to be used in module files
     $options = get_theme_support($feature);
-    if ( isset($options[0]) && is_array($options[0]) )
+    if ( isset($options[0]) && is_array($options[0]) ) {
         $options = $options[0];
+    }
 
     require_once $file;
 

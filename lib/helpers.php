@@ -3,31 +3,40 @@
 namespace Frc\WP\Base;
 
 function is_env($env) {
+
     return strtolower(WP_ENV) === strtolower($env);
+
 }
 
 function frc_is_plugin_active($plugin) {
-    if ( !function_exists('is_plugin_active') )
+
+    if ( !function_exists('is_plugin_active') ) {
         include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+    }
 
     return is_plugin_active(
         frc_locate_plugin($plugin)
     );
+
 }
 
 function frc_plugin_alias($name) {
+
     $mapper = [
         'advanced-custom-fields-pro' => 'acf',
         'yoast' => 'wordpress-seo',
         'gravity-forms' => 'gravityforms',
     ];
 
-    if ( isset($mapper[$name]) )
+    if ( isset($mapper[$name]) ) {
         return $mapper[$name];
+    }
+
     return $name;
 }
 
 function frc_locate_plugin($name) {
+
     $name = frc_plugin_alias($name);
 
     $mapper = [
@@ -37,12 +46,16 @@ function frc_locate_plugin($name) {
         'wp-no-admin-ajax' => 'wp-no-admin-ajax/plugin.php',
     ];
 
-    if ( isset($mapper[$name]) )
+    if ( isset($mapper[$name]) ) {
         return $mapper[$name];
+    }
 
     return $name . '/' . $name . '.php';
+
 }
 
 function asset_path($path) {
+
     return plugins_url( 'assets/' . $path , dirname(__DIR__) . '/plugin.php' );
+
 }
