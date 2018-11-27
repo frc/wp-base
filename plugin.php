@@ -111,8 +111,8 @@ function enabled_by_default($feature) {
     $feature = str_replace(FRC_FEATURE_PREFIX, '', $feature);
     return in_array($feature, [
         'plugin-defaults',
-        'admin-defaults',
         'login-defaults',
+        'admin-defaults',
         'theme-defaults',
     ]);
 }
