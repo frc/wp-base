@@ -12,7 +12,7 @@ namespace Frc\WP\Base;
 
 require_once __DIR__ . '/lib/helpers.php';
 
-const FRC_FEATURE_PREFIX = 'frc-base-';
+const FRC_WP_BASE_FEATURE_PREFIX = 'frc-base-';
 
 if ( !defined('WP_ENV') ) {
     define('WP_ENV', 'production');
@@ -50,13 +50,13 @@ function load_modules() {
 }
 
 function get_plugin_from_feature($feature) {
-    $prefix = FRC_FEATURE_PREFIX;
+    $prefix = FRC_WP_BASE_FEATURE_PREFIX;
     return str_replace("{$prefix}plugin-", '', $feature);
 }
 
 function maybe_require_feature($file, $side = 'theme') {
 
-    $prefix = FRC_FEATURE_PREFIX;
+    $prefix = FRC_WP_BASE_FEATURE_PREFIX;
 
     // Set feature name, for example: frc-theme-disable-api
     $feature = $prefix . $side . '-' . basename($file, '.php');
@@ -108,7 +108,7 @@ function maybe_require_feature($file, $side = 'theme') {
 }
 
 function enabled_by_default($feature) {
-    $feature = str_replace(FRC_FEATURE_PREFIX, '', $feature);
+    $feature = str_replace(FRC_WP_BASE_FEATURE_PREFIX, '', $feature);
     return in_array($feature, [
         'plugin-defaults',
         'login-defaults',

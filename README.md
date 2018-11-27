@@ -67,7 +67,6 @@ Some modules supports options:
 `frc-base-theme-disable-rest-api`:
 
 ```php
-
 add_theme_support('frc-base-theme-disable-rest-api', [
     'disabled' => ['/'], // Disable all routes
     // or
