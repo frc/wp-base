@@ -40,8 +40,8 @@ function hide_wordpress_update_notices() {
     remove_action( 'admin_notices', 'update_nag', 3 );
 }
 
-add_action( 'admin_init', __NAMESPACE__ . '\\disable_update_checks' );
-add_action( 'admin_menu', __NAMESPACE__ . '\\hide_wordpress_update_notices' );
+add_action( 'admin_init', __NAMESPACE__ . '\\disable_update_checks', 0 );
+add_action( 'admin_menu', __NAMESPACE__ . '\\hide_wordpress_update_notices', 0 );
 
 remove_action('init', 'wp_schedule_update_checks');
 remove_action('init', 'wp_check_browser_version');
