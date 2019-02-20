@@ -17,7 +17,14 @@ if ( defined( 'WP_ENV' ) && WP_ENV !== 'production' ) {
  * @link http://codex.wordpress.org/Plugin_API/Filter_Reference/login_message
  */
 function add_development_login_message($message) {
-    return '<p class="message" style="border-left: 4px solid #FFBA00;">' . wp_kses(__('<strong>Note:</strong> You are about to login to a <strong>' . WP_ENV . '</strong> environment', 'frc-wp-base'), 'strong') . '</p>' . $message;
+    return '<p class="message" style="border-left: 4px solid #FFBA00;">' .
+        wp_kses(
+            sprintf(
+                __('<strong>Note:</strong> You are about to login to a <strong>%s</strong> environment', 'frc-wp-base'),
+                WP_ENV
+            ),
+            'strong'
+        ) . '</p>' . $message;
 }
 
 function login_styles() {

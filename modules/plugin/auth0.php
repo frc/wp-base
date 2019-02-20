@@ -34,6 +34,8 @@ function login_message($html) {
 
     $options = helpers\get_options(__FILE__);
 
+    $options['language'] =  $options['language'] ?? get_locale();
+
     wp_register_script( 'dummy-handle-footer', '', [], '', true );
     wp_enqueue_script( 'dummy-handle-footer'  );
 
@@ -63,3 +65,24 @@ function login_message($html) {
 }
 
 add_filter( 'login_message', __NAMESPACE__ . '\\login_message');
+
+function gettext($translation, $text, $domain) {
+
+    if ( $domain !== 'wp-auth0' ) {
+        return $translation;
+    }
+
+    if ( get_locale() !== 'fi' ) {
+        return $translation;
+    }
+
+    switch($text) {
+        case 'Login with WordPress username':
+            return 'Kirjaudu WordPress-tunnuksilla';
+        case '← Back to %s login':
+            return '← %s kirjautuminen';
+    }
+
+    return $translation;
+}
+add_filter( 'gettext', __NAMESPACE__ . '\\gettext', 10, 3 );
