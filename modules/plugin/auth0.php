@@ -20,7 +20,7 @@ function enqueue_styles() {
     if ( isset($options['header']) && $options['header'] === false ) {
         wp_add_inline_style('base/login-auth0', "
 #auth0-login-form {
-    min-height: 113px;
+    min-height: 125px;
 }
 .auth0-lock.auth0-lock .auth0-lock-header {
     display: none;

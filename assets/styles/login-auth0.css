@@ -7,8 +7,20 @@
     width: 320px;
 }
 
-.auth0-lock .auth0-lock-last-login-pane .auth0-lock-social-button.auth0-lock-social-big-button {
-    margin-top: 10px !important;
+.auth0-lock.auth0-lock .auth0-lock-form p {
+    margin-bottom: 10px !important;
+    text-align: left !important;
+}
+
+.auth0-lock.auth0-lock .auth0-lock-cred-pane,
+.auth0-lock.auth0-lock .auth0-lock-header-bg .auth0-lock-header-bg-blur,
+.auth0-lock.auth0-lock .auth0-lock-widget,
+.auth0-lock.auth0-lock .auth0-lock-header {
+    border-radius: 0 !important;
+}
+
+.auth0-lock.auth0-lock .auth0-lock-content {
+    padding: 26px 24px !important;
 }
 
 #extra-options a {
