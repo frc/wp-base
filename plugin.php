@@ -72,7 +72,7 @@ function maybe_require_feature($file, $side = 'theme') {
     }
 
     // If all side's modules wanted, add support for individual modules
-    if ( current_theme_supports(get_feature_id($side, 'all')) ) {
+    if ( current_theme_supports(get_feature_id($side, 'all')) && !current_theme_supports($feature) ) {
         add_theme_support($feature);
     }
 
