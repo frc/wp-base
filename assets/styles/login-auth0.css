@@ -1,3 +1,16 @@
+#auth0-login-form {
+    margin: 0 auto 20px;
+    width: 100%;
+}
+
+.auth0-lock.auth0-lock .auth0-lock-widget.auth0-lock-widget {
+    width: 320px;
+}
+
+.auth0-lock .auth0-lock-last-login-pane .auth0-lock-social-button.auth0-lock-social-big-button {
+    margin-top: 10px !important;
+}
+
 #extra-options a {
     text-align: center;
     height: 30px;
@@ -9,9 +22,9 @@
     color: #fff;
     text-decoration: none;
     text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;
-    vertical-align: top;
+    vertical-align: baseline;
     display: inline-block;
-    font-size: 16px;
+    font-size: 13px;
     margin: 0;
     cursor: pointer;
     border-width: 1px;
