@@ -62,6 +62,8 @@ function asset_path($path) {
 
     return plugins_url( 'assets/' . $path , dirname(__DIR__) . '/plugin.php' );
 
+}
+
 function get_options($path) {
 
     $dir = pathinfo(dirname($path));
