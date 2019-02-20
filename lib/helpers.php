@@ -62,4 +62,18 @@ function asset_path($path) {
 
     return plugins_url( 'assets/' . $path , dirname(__DIR__) . '/plugin.php' );
 
+function get_options($path) {
+
+    $dir = pathinfo(dirname($path));
+    $file = pathinfo($path);
+
+    $feature = get_feature_id($dir['filename'], $file['filename']);
+
+    $options = get_theme_support($feature);
+    if ( isset($options[0]) && is_array($options[0]) ) {
+        return $options[0];
+    }
+
+    return [];
+
 }
