@@ -56,10 +56,8 @@ function get_plugin_from_feature($feature) {
 
 function maybe_require_feature($file, $side = 'theme') {
 
-    $prefix = FRC_WP_BASE_FEATURE_PREFIX;
-
     // Set feature name, for example: frc-theme-disable-api
-    $feature = $prefix . $side . '-' . basename($file, '.php');
+    $feature = get_feature_id($side, basename($file, '.php'));
 
     // Remove disabled (prefixed with "!")
     if ( current_theme_supports('!' . $feature) ) {
@@ -74,7 +72,7 @@ function maybe_require_feature($file, $side = 'theme') {
     }
 
     // If all side's modules wanted, add support for individual modules
-    if ( current_theme_supports("{$prefix}{$side}-all") ) {
+    if ( current_theme_supports(get_feature_id($side, 'all')) ) {
         add_theme_support($feature);
     }
 

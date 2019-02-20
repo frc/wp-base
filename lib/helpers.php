@@ -2,6 +2,10 @@
 
 namespace Frc\WP\Base;
 
+function get_feature_id($side, $module) {
+    return sprintf('%s%s-%s', FRC_WP_BASE_FEATURE_PREFIX, $side, $module);
+}
+
 function is_env($env) {
 
     return strtolower(WP_ENV) === strtolower($env);
