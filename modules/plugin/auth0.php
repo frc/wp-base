@@ -28,7 +28,7 @@ function enqueue_styles() {
         ");
     }
 }
-add_action( 'login_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles', );
+add_action( 'login_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles' );
 
 function login_message($html) {
 
