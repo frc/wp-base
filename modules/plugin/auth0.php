@@ -34,7 +34,7 @@ function login_message($html) {
 
     $options = helpers\get_options(__FILE__);
 
-    $options['language'] =  $options['language'] ?? get_locale();
+    $options['language'] =  $options['language'] ?? substr(get_locale(), 0, 2);
 
     wp_register_script( 'dummy-handle-footer', '', [], '', true );
     wp_enqueue_script( 'dummy-handle-footer'  );
