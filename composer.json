@@ -1,8 +1,9 @@
 {
-    "name": "frc/frc-wp-base",
+    "name": "frc/wp-base",
     "type": "wordpress-muplugin",
     "description": "A collection of modifications and default settings to apply for theme, admin, login & plugins.",
     "homepage": "https://www.frantic.com/",
+    "license": "MIT",
     "authors": [
         {
             "name": "Joonas Meriläinen",
