@@ -4,10 +4,10 @@ namespace Frc\WP\Base\Login\Expiration;
 
 function login_expiration($seconds, $user_id, $remember) {
     //WP default = 2 weeks;
-    $rememberExpiration = 1 * 24 * 60 * 60; //1 day
+    $rememberExpiration = DAY_IN_SECONDS; //1 day
 
     //WP default = 2 days;
-    $expiration = 12 * 60 * 60; //12 hours
+    $expiration = DAY_IN_SECONDS / 2; //12 hours
 
     //if "remember me" is checked;
     if ($remember) {
