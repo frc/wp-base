@@ -73,6 +73,13 @@ add_theme_support('frc-base-theme-disable-rest-api', [
     'disabled' => ['users', 'posts'], // Disable user & post routes
 
     'allowed' => ['posts'], // If all routes has been disabled but allow 'posts' route
+    
+    // super admin / admins have access to all routes always, other logged in users can be limited as follows
+    'authenticated' => [
+         'disabled' => ['/'],
+         'allowed' => ['posts'],
+     ]
+    
 ]);
 ```
 
