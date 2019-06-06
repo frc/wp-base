@@ -83,9 +83,14 @@ add_filter( 'rest_authentication_errors', function( $result ) {
     $current_route = get_current_route();
 
     if ( is_user_logged_in() ) {
+        if ( is_super_admin() ) {
+            return $result;
+        }
+
         if (!is_whitelisted($current_route, true)) {
             return new WP_Error('rest_forbidden', __('Sorry, you are not allowed to do that.'), ['status' => rest_authorization_required_code()]);
         }
+
         return $result;
     }
 
