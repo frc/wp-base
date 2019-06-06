@@ -89,6 +89,7 @@ Login
 
 - `frc-base-login-defaults` `(enabled by default)`
 - `frc-base-login-force`
+- `frc-base-login-expiration`
 
 Plugin
 
