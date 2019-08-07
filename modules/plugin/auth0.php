@@ -12,7 +12,7 @@ function enqueue_styles() {
     if ( !empty($options['primaryColor']) ) {
         wp_add_inline_style('base/login-auth0', "
 .auth0-lock.auth0-lock .auth0-lock-header-bg.auth0-lock-header-bg {
-    background: {$options['primaryColor']};
+    background: {$options['primaryColor']} !important;
 }
         ");
     }
@@ -23,12 +23,12 @@ function enqueue_styles() {
     min-height: 125px;
 }
 .auth0-lock.auth0-lock .auth0-lock-header {
-    display: none;
+    display: none !important;
 }
         ");
     }
 }
-add_action( 'login_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles' );
+add_action( 'login_enqueue_scripts', __NAMESPACE__ . '\\enqueue_styles', 999 );
 
 function login_message($html) {
 
