@@ -23,6 +23,10 @@
     padding: 26px 24px !important;
 }
 
+.auth0-lock.auth0-lock .auth0-lock-form {
+    padding: 0 !important;
+}
+
 #extra-options a {
     text-align: center;
     height: 30px;
