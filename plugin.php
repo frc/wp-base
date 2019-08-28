@@ -24,6 +24,10 @@ function fetch_modules($folder) {
 
 function load_modules() {
 
+    foreach ( fetch_modules('shared') as $file ) {
+        maybe_require_feature($file, 'shared');
+    }
+
     // Load plugin modules always first
     foreach ( fetch_modules('plugin') as $file ) {
         maybe_require_feature($file, 'plugin');
