@@ -30,8 +30,23 @@ function head_cleanup() {
     remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
     add_filter( 'emoji_svg_url', '__return_false' );
 
+    // Gutenberg styles if not in use
+    $gutenberg_is_active = apply_filters('use_block_editor_for_post_type', true);
+    if ( !$gutenberg_is_active ) {
+        add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\remove_block_css', 900 );
+    }
+
 }
 add_action('init', __NAMESPACE__ . '\\head_cleanup');
+
+/**
+* Remove the Gutenberg styles from theme
+*/
+function remove_block_css() {
+    wp_dequeue_style( 'wp-block-library' ); // Core
+    wp_dequeue_style( 'wp-block-library-theme' ); // Core
+    wp_dequeue_style( 'wc-block-style' ); // WooCommerce
+}
 
 /**
  * Remove the WordPress version from RSS feeds
