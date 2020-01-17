@@ -55,7 +55,7 @@ function force_gforms_settings($form, $is_new) {
         // Form inactivates automatically if we don't force it active
         // http://inlinedocs.gravityhelp.com/source-class-GFAPI.html#209
         $form['is_active'] = true;
-        GFAPI::update_form($form);
+        \GFAPI::update_form($form);
     }
 }
 add_action('gform_after_save_form', __NAMESPACE__ . '\\force_gforms_settings', 10, 2);
