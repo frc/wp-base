@@ -29,6 +29,7 @@ function head_cleanup() {
     remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
     remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
     add_filter( 'emoji_svg_url', '__return_false' );
+    add_filter( 'option_use_smilies', '__return_false' );
 
 }
 add_action('init', __NAMESPACE__ . '\\head_cleanup');
