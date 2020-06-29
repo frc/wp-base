@@ -69,6 +69,12 @@ function is_whitelisted($router, $authenticated = false) {
     $blocked = apply_filters($disabled, []);
     $allowed = apply_filters($allowed, []);
 
+    foreach( $allowed as $item ) {
+        if (strpos($router, $item) !== false) {
+            return true;
+        }
+    }
+
     foreach( $blocked as $item ) {
         if ( !in_array($item, $allowed) && strpos($router, $item) !== false ) {
             return false;
