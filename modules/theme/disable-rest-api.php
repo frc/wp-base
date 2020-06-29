@@ -76,7 +76,11 @@ function is_whitelisted($router, $authenticated = false) {
     }
 
     foreach( $blocked as $item ) {
-        if ( !in_array($item, $allowed) && strpos($router, $item) !== false ) {
+        if (in_array($item, $allowed)) {
+            continue;
+        }
+
+        if (strpos($router, $item) !== false) {
             return false;
         }
     }
