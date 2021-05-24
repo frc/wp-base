@@ -66,7 +66,7 @@ add_action('gform_after_save_form', __NAMESPACE__ . '\\force_gforms_settings', 1
 function disable_bad_gforms_fields($field_groups) {
     $disable = [
         'standard_fields' => ['list'],
-        'advanced_fields' => ['name', 'address']
+        'advanced_fields' => ['name']
     ];
     foreach ($field_groups as $gkey => $field_group) {
         if (!isset($disable[$field_group['name']])) continue;
